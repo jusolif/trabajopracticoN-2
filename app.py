@@ -31,7 +31,7 @@ class DataAnalyzer:
     def porcentajes_nulos(self):
         return (self.df.isnull().sum()/ len(self.df)* 100)
 
-modulo = st.sidebar.selectbox("Seleccione una sección:",["Home","Carga del dataset","Módulo 3: Análisis de Datos"])
+modulo = st.sidebar.selectbox("Seleccione una sección:",["Home","Carga del dataset","Análisis de Datos","Conclusiones"])
 
 if modulo == "Home":
     st.title("Primer Proyecto de Portafolio Profesional")
@@ -86,9 +86,9 @@ elif modulo == "Carga del dataset":
         st.warning("Debe cargar el archivo BankMarketing.csv para continuar.")
 
 
-elif modulo == "Módulo 3: Análisis de Datos":
+elif modulo == "Análisis de Datos":
 
-    st.header("Módulo 3: Análisis de Datos")
+    st.header("Análisis de Datos")
 
     st.markdown("""
     En este módulo se realiza el análisis exploratorio del dataset
@@ -707,3 +707,30 @@ elif modulo == "Módulo 3: Análisis de Datos":
             es identificar patrones y relaciones que ayuden a comprender
             el comportamiento de los clientes frente a la campaña.
             """)
+
+elif modulo == "Conclusiones":
+        st.write("1. La aceptación de la campaña fue relativamente baja 
+        ya que solo el 11.27% de los clientes aceptó la propuesta, 
+        mientras que el 88.73% no lo hizo. Esto significa una oportunidad para mejorar 
+        la estrategia comercial, especialmente en la segmentación 
+        y selección de los clientes contactados.")
+        st.write("2. La duración de las llamadas presenta una diferencia 
+        importante entre los clientes que aceptaron y los que no. 
+        Los clientes que aceptaron tuvieron una duración promedio 
+        de aproximadamente 553 segundos, frente a 221 segundos 
+        en quienes no aceptaron. Este resultado puede ser útil para revisar 
+        la calidad de las interacciones y no solamente 
+        la cantidad de llamadas realizadas.")
+        st.write("3. El resultado de las campañas anteriores está relacionado con la aceptación de la campaña actual. 
+        Los clientes que habían aceptado una campaña anterior mostraron una mayor aceptación en la campaña analizada. 
+        Por ello, sería conveniente considerar el historial de cada cliente al momento de organizar futuras campañas.")
+        st.write("4. El medio de contacto presenta diferencias en los niveles de aceptación. 
+        Los clientes contactados mediante celular tuvieron una aceptación aproximada de 14.74%, 
+        mientras que los contactados por teléfono fue de 5.23%. Esto puede servir 
+        para revisar qué canales son más convenientes usar en futuras campañas.")
+        st.write("5. Las características de los clientes permiten identificar segmentos que presentan comportamientos 
+        diferentes en la campaña. Por ejemplo, el grupo student presentó una aceptación de aproximadamente 31.43%, 
+        mientras que blue-collar alcanzó cerca del 6.89%. Estos resultados pueden ayudar a tomar decisiones de 
+        segmentación y asignación de recursos comerciales.")    
+
+
