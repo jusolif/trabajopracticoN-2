@@ -713,52 +713,21 @@ elif modulo == "Conclusiones":
     st.markdown("""1. La aceptación de la campaña fue relativamente baja, ya que solo el 11.27% de los clientes aceptó la propuesta, mientras que el 88.73% no lo hizo. 
     Esto muestra una oportunidad de mejora en la estrategia comercial, especialmente en la segmentación y selección de los clientes contactados.""")
 
-    st.markdown("""
-    **2. Duración de las llamadas**
+    st.markdown("""La duración de las llamadas presenta una diferencia importante entre los clientes que aceptaron y los que no. Los clientes que aceptaron tuvieron 
+    una duración promedio de aproximadamente 553 segundos, frente a 221 segundos en quienes no aceptaron. Este resultado puede ser útil para 
+    revisar la calidad de las interacciones y no solamente la cantidad de llamadas realizadas.""")
 
-    La duración de las llamadas presenta una diferencia importante entre los 
-    clientes que aceptaron y los que no. Los clientes que aceptaron tuvieron 
-    una duración promedio de aproximadamente 553 segundos, frente a 221 
-    segundos en quienes no aceptaron. Este resultado puede ser útil para 
-    revisar la calidad de las interacciones y no solamente la cantidad de 
-    llamadas realizadas.
-    """)
+    st.markdown("""El resultado de las campañas anteriores está relacionado con la aceptación de la campaña actual. Los clientes que habían aceptado una campaña anterior 
+    mostraron una mayor aceptación en la campaña analizada. Por ello, sería conveniente considerar el historial de cada cliente al momento de organizar 
+    futuras campañas.""")
 
-    st.markdown("""
-    **3. Resultado de campañas anteriores**
+    st.markdown("""El medio de contacto también presenta diferencias en los niveles de aceptación. Los clientes contactados mediante celular tuvieron una 
+    aceptación aproximada de 14.74%, mientras que en teléfono fue de 5.23%. Este resultado puede servir como referencia para revisar la distribución 
+    de los canales utilizados en futuras campañas.""")
 
-    El resultado de las campañas anteriores está relacionado con la aceptación 
-    de la campaña actual. Los clientes que habían aceptado una campaña anterior 
-    mostraron una mayor aceptación en la campaña analizada. Por ello, sería 
-    conveniente considerar el historial de cada cliente al momento de organizar 
-    futuras campañas.
-    """)
+    st.markdown("""Las características de los clientes permiten identificar segmentos con comportamientos diferentes frente a la campaña. Por ejemplo, el grupo de 
+    estudiantes presentó una aceptación aproximada de 31.43%, mientras que el grupo de trabajadores de tipo `blue-collar` alcanzó cerca del 6.89%. 
+    Estos resultados pueden apoyar decisiones de segmentación y asignación de recursos comerciales.""")
 
-    st.markdown("""
-    **4. Medio de contacto**
-
-    El medio de contacto también presenta diferencias en los niveles de 
-    aceptación. Los clientes contactados mediante celular tuvieron una 
-    aceptación aproximada de 14.74%, mientras que en teléfono fue de 5.23%. 
-    Este resultado puede servir como referencia para revisar la distribución 
-    de los canales utilizados en futuras campañas.
-    """)
-
-    st.markdown("""
-    **5. Segmentación de clientes**
-
-    Las características de los clientes permiten identificar segmentos con 
-    comportamientos diferentes frente a la campaña. Por ejemplo, el grupo de 
-    estudiantes presentó una aceptación aproximada de 31.43%, mientras que 
-    el grupo de trabajadores de tipo `blue-collar` alcanzó cerca del 6.89%. 
-    Estos resultados pueden apoyar decisiones de segmentación y asignación 
-    de recursos comerciales.
-    """)
-
-    st.info(
-        "Las conclusiones se basan en el análisis exploratorio realizado "
-        "sobre el dataset y están orientadas a apoyar la toma de decisiones, "
-        "no a realizar predicciones."
-    )
 
 
