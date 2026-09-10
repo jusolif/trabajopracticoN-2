@@ -706,9 +706,6 @@ elif modulo == "Análisis de Datos":
             dataset y no representan modelos predictivos. El objetivo
             es identificar patrones y relaciones que ayuden a comprender
             el comportamiento de los clientes frente a la campaña.
-            """)
-
-elif modulo == "Conclusiones":
-        
+            """)        
 
 
