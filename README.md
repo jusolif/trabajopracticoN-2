@@ -16,5 +16,7 @@
 ![Conclusiones](capturas/conclusiones.png)
 
 3. Links relevantes:
+   
    Repositorio de GitHub: https://github.com/jusolif/trabajopracticoN-2
+   
    Aplicación en Streamlit: https://trabajopracticon-2-ixdrbelmcxteub23nnbitf.streamlit.app/
