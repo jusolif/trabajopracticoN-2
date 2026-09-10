@@ -709,11 +709,11 @@ elif modulo == "Análisis de Datos":
             """)
 
 elif modulo == "Conclusiones":
-        st.markdown(1. La aceptación de la campaña fue relativamente baja
+        st.markdown("1. La aceptación de la campaña fue relativamente baja
                     ya que solo el 11.27% de los clientes aceptó la propuesta, 
                     mientras que el 88.73% no lo hizo. Esto significa una oportunidad para mejorar 
                     la estrategia comercial, especialmente en la segmentación 
-                    y selección de los clientes contactados.)
+                    y selección de los clientes contactados.")
         
         
 
