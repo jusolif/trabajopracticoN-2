@@ -16,13 +16,9 @@ class DataAnalyzer:
         return buffer.getvalue()
 
     def clasificar_variables(self):
-        numericas = self.df.select_dtypes(
-            include=np.number
-        ).columns.tolist()
+        numericas = self.df.select_dtypes(include=np.number).columns.tolist()
 
-        categoricas = self.df.select_dtypes(
-            exclude=np.number
-        ).columns.tolist()
+        categoricas = self.df.select_dtypes(exclude=np.number).columns.tolist()
 
         return numericas, categoricas
 
@@ -33,13 +29,9 @@ class DataAnalyzer:
         return self.df.isnull().sum()
 
     def porcentajes_nulos(self):
-        return (
-            self.df.isnull().sum()
-            / len(self.df)
-            * 100
-        )
+        return (self.df.isnull().sum()/ len(self.df)* 100)
 
-modulo = st.sidebar.selectbox("Seleccione una sección:",["Home","Carga del dataset","Módulo 3: Análisis Exploratorio de Datos"])
+modulo = st.sidebar.selectbox("Seleccione una sección:",["Home","Carga del dataset","Módulo 3: Análisis de Datos"])
 
 if modulo == "Home":
     st.title("Primer Proyecto de Portafolio Profesional")
@@ -94,27 +86,22 @@ elif modulo == "Carga del dataset":
         st.warning("Debe cargar el archivo BankMarketing.csv para continuar.")
 
 
-elif modulo == "Módulo 3: Análisis Exploratorio de Datos":
+elif modulo == "Módulo 3: Análisis de Datos":
 
-    st.header("Módulo 3: Análisis Exploratorio de Datos (EDA)")
+    st.header("Módulo 3: Análisis de Datos")
 
     st.markdown("""
     En este módulo se realiza el análisis exploratorio del dataset
     BankMarketing.csv con el objetivo de identificar características,
     comportamientos y relaciones relevantes de los clientes frente
-    a la campaña de marketing.
-    """)
+    a la campaña de marketing.""")
 
-    # ---------------------------------------------------------
-    # VALIDAR QUE EL DATASET HAYA SIDO CARGADO
-    # ---------------------------------------------------------
 
     if "df" not in st.session_state:
 
         st.warning(
             "Primero debe cargar el archivo BankMarketing.csv "
-            "en el Módulo 2."
-        )
+            "en el Módulo 2.")
 
     else:
 
@@ -122,18 +109,11 @@ elif modulo == "Módulo 3: Análisis Exploratorio de Datos":
 
         analyzer = DataAnalyzer(df)
 
-        # -----------------------------------------------------
-        # INFORMACIÓN BÁSICA
-        # -----------------------------------------------------
 
         st.info(
             f"El dataset contiene {df.shape[0]} registros "
-            f"y {df.shape[1]} variables."
-        )
+            f"y {df.shape[1]} variables.")
 
-        # -----------------------------------------------------
-        # TABS
-        # -----------------------------------------------------
 
         tab1, tab2, tab3, tab4, tab5, \
         tab6, tab7, tab8, tab9, tab10 = st.tabs([
@@ -146,12 +126,8 @@ elif modulo == "Módulo 3: Análisis Exploratorio de Datos":
             "7. Numérica vs categórica",
             "8. Categórica vs categórica",
             "9. Análisis dinámico",
-            "10. Hallazgos clave"
-        ])
+            "10. Hallazgos clave"])
 
-        # =====================================================
-        # ÍTEM 1
-        # =====================================================
 
         with tab1:
 
@@ -159,8 +135,7 @@ elif modulo == "Módulo 3: Análisis Exploratorio de Datos":
 
             st.markdown("""
             Esta sección permite conocer la estructura general del
-            dataset, los tipos de datos y la existencia de valores nulos.
-            """)
+            dataset, los tipos de datos y la existencia de valores nulos.""")
 
             col1, col2 = st.columns(2)
 
@@ -176,33 +151,18 @@ elif modulo == "Módulo 3: Análisis Exploratorio de Datos":
 
                 st.write("### Tipos de datos")
 
-                tipos = pd.DataFrame({
-                    "Variable": df.columns,
-                    "Tipo de dato": df.dtypes.astype(str)
-                })
+                tipos = pd.DataFrame({"Variable": df.columns,"Tipo de dato": df.dtypes.astype(str)})
 
-                st.dataframe(
-                    tipos,
-                    use_container_width=True
-                )
+                st.dataframe(tipos,use_container_width=True)
 
                 st.write("### Valores nulos")
 
                 nulos = analyzer.valores_nulos()
 
-                tabla_nulos = pd.DataFrame({
-                    "Variable": nulos.index,
-                    "Valores nulos": nulos.values
-                })
+                tabla_nulos = pd.DataFrame({"Variable": nulos.index,"Valores nulos": nulos.values})
 
-                st.dataframe(
-                    tabla_nulos,
-                    use_container_width=True
-                )
+                st.dataframe(tabla_nulos,use_container_width=True)
 
-        # =====================================================
-        # ÍTEM 2
-        # =====================================================
 
         with tab2:
 
@@ -211,8 +171,7 @@ elif modulo == "Módulo 3: Análisis Exploratorio de Datos":
             st.markdown("""
             Las variables se clasifican en numéricas y categóricas.
             Esta clasificación permite seleccionar posteriormente
-            el tipo de análisis y visualización más adecuado.
-            """)
+            el tipo de análisis y visualización más adecuado.""")
 
             numericas, categoricas = analyzer.clasificar_variables()
 
@@ -222,37 +181,19 @@ elif modulo == "Módulo 3: Análisis Exploratorio de Datos":
 
                 st.write("### Variables numéricas")
 
-                st.metric(
-                    "Cantidad",
-                    len(numericas)
-                )
+                st.metric("Cantidad",len(numericas))
 
-                st.dataframe(
-                    pd.DataFrame({
-                        "Variables numéricas": numericas
-                    }),
-                    use_container_width=True
-                )
+                st.dataframe(pd.DataFrame({"Variables numéricas": numericas}),use_container_width=True)
 
             with col2:
 
                 st.write("### Variables categóricas")
 
-                st.metric(
-                    "Cantidad",
-                    len(categoricas)
-                )
+                st.metric("Cantidad",len(categoricas))
 
-                st.dataframe(
-                    pd.DataFrame({
-                        "Variables categóricas": categoricas
-                    }),
-                    use_container_width=True
-                )
+                st.dataframe(pd.DataFrame({"Variables categóricas": categoricas}),use_container_width=True)
 
-        # =====================================================
-        # ÍTEM 3
-        # =====================================================
+       
 
         with tab3:
 
@@ -261,15 +202,11 @@ elif modulo == "Módulo 3: Análisis Exploratorio de Datos":
             st.markdown("""
             Las estadísticas descriptivas permiten analizar medidas
             como la media, mediana, desviación estándar, valores mínimos
-            y máximos de las variables numéricas.
-            """)
+            y máximos de las variables numéricas.""")
 
             estadisticas = analyzer.estadisticas_descriptivas()
 
-            st.dataframe(
-                estadisticas,
-                use_container_width=True
-            )
+            st.dataframe(estadisticas,use_container_width=True)
 
             st.write("### Interpretación básica")
 
@@ -277,26 +214,17 @@ elif modulo == "Módulo 3: Análisis Exploratorio de Datos":
 
             with col1:
                 st.write("**Media**")
-                st.write(
-                    "Representa el valor promedio de los datos."
-                )
+                st.write("Representa el valor promedio de los datos.")
 
             with col2:
                 st.write("**Mediana**")
-                st.write(
-                    "Representa el valor central de los datos."
-                )
+                st.write("Representa el valor central de los datos.")
 
             with col3:
                 st.write("**Dispersión**")
-                st.write(
-                    "Permite observar qué tan alejados están "
-                    "los datos respecto a su promedio."
-                )
+                st.write("Permite observar qué tan alejados están ""los datos respecto a su promedio.")
 
-        # =====================================================
-        # ÍTEM 4
-        # =====================================================
+  
 
         with tab4:
 
@@ -305,40 +233,33 @@ elif modulo == "Módulo 3: Análisis Exploratorio de Datos":
             nulos = analyzer.valores_nulos()
             porcentajes = analyzer.porcentajes_nulos()
 
-            tabla_faltantes = pd.DataFrame({
-                "Variable": nulos.index,
+            tabla_faltantes = pd.DataFrame({"Variable": nulos.index,
                 "Valores faltantes": nulos.values,
-                "Porcentaje (%)": porcentajes.round(2).values
-            })
+                "Porcentaje (%)": porcentajes.round(2).values})
 
             tabla_faltantes = tabla_faltantes[
-                tabla_faltantes["Valores faltantes"] > 0
-            ]
+                tabla_faltantes["Valores faltantes"] > 0]
 
             if tabla_faltantes.empty:
 
                 st.success(
                     "No se encontraron valores faltantes "
-                    "en el dataset."
-                )
+                    "en el dataset.")
 
             else:
 
                 st.dataframe(
                     tabla_faltantes,
-                    use_container_width=True
-                )
+                    use_container_width=True)
 
                 fig, ax = plt.subplots()
 
                 ax.bar(
                     tabla_faltantes["Variable"],
-                    tabla_faltantes["Valores faltantes"]
-                )
+                    tabla_faltantes["Valores faltantes"])
 
                 ax.set_title(
-                    "Valores faltantes por variable"
-                )
+                    "Valores faltantes por variable")
 
                 ax.set_xlabel("Variable")
                 ax.set_ylabel("Cantidad")
@@ -350,43 +271,35 @@ elif modulo == "Módulo 3: Análisis Exploratorio de Datos":
                 st.markdown("""
                 **Discusión:** los valores faltantes pueden afectar
                 los resultados del análisis. Por ello, deben identificarse
-                antes de realizar interpretaciones sobre las variables.
-                """)
+                antes de realizar interpretaciones sobre las variables.""")
 
-        # =====================================================
-        # ÍTEM 5
-        # =====================================================
+       
 
         with tab5:
 
             st.subheader(
-                "Ítem 5: Distribución de variables numéricas"
-            )
+                "Ítem 5: Distribución de variables numéricas")
 
             st.markdown("""
             Los histogramas permiten observar la distribución de los
             valores y detectar concentraciones, asimetrías o posibles
-            valores extremos.
-            """)
+            valores extremos.""")
 
             numericas, _ = analyzer.clasificar_variables()
 
             variables_grafico = st.multiselect(
                 "Seleccione las variables numéricas:",
                 numericas,
-                default=numericas[:2]
-            )
+                default=numericas[:2])
 
             bins = st.slider(
                 "Cantidad de intervalos del histograma:",
                 min_value=5,
                 max_value=50,
-                value=20
-            )
+                value=20)
 
             mostrar_kde = st.checkbox(
-                "Mostrar curva de distribución KDE"
-            )
+                "Mostrar curva de distribución KDE")
 
             for variable in variables_grafico:
 
@@ -397,23 +310,17 @@ elif modulo == "Módulo 3: Análisis Exploratorio de Datos":
                     x=variable,
                     bins=bins,
                     kde=mostrar_kde,
-                    ax=ax
-                )
+                    ax=ax)
 
-                ax.set_title(
-                    f"Distribución de {variable}"
-                )
+                ax.set_title(f"Distribución de {variable}")
 
                 st.pyplot(fig)
 
                 st.write(
                     f"**Interpretación:** el histograma muestra "
-                    f"cómo se distribuyen los valores de `{variable}`."
-                )
+                    f"cómo se distribuyen los valores de `{variable}`.")
 
-        # =====================================================
-        # ÍTEM 6
-        # =====================================================
+      
 
         with tab6:
 
